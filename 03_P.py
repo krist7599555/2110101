@@ -17,6 +17,7 @@ print(sum(i for i in range(int(input())) if not i % 3 or not i % 5))
 # 03_P4
 n = int(input())
 print(sum(float(input()) for _ in range(n)) / n if n else 'No Data')
+
 # 03_P5
 ls = []
 while True:
