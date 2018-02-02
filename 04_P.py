@@ -22,9 +22,7 @@ inp = input().strip()
 print(inp, sum(map(int, inp)) & 1, sep = '')
 
 # 04_P7
-mis = set('0123456789') - set(input())
-if mis: print(*sorted(mis)) 
-else:   print('No missing digits')
+print(*sorted(set('0123456789') - set(input()) or ['No missing digits']))
 
 # 04_P8
 inp = list(input().lower())
