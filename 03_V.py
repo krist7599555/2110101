@@ -22,15 +22,10 @@ for i, j in sorted(ls): print(i, j)
 if not ls: print('No solution')
 
 # 03_V4
-from functools import reduce
-from itertools import count
-from operator  import mul
-x = float(input())
-mmo = 0
-for k in count(0):
-	tmp = pow(-1, k) * pow(x, 2 * k) / reduce(mul, range(1, 2 * k + 1), 1)
-	if abs(tmp) < 1e-8:
-		print(mmo, k - 1)
-		break
-	else:
-		mmo += tmp
+from math import factorial
+def a(x, k):
+    return pow(-1, k) * pow(x, 2 * k) / factorial(2 * k)
+x, k = float(input()), 0
+while abs(a(x, k)) > 1e-8:
+    k += 1
+print(sum(a(x, i) for i in range(k)), k-1)
