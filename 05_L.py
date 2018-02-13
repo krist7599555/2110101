@@ -13,18 +13,18 @@ print(sum(it)/len(it) if it is not None else 'Not Found')
 print(__import__('functools').reduce(int.__xor__, map(ord, ''.join(open(input().strip())))))
 
 # 05_L4
-f = ''.join(open(input().strip()))
-l = int(input())
+f = map(str.strip, open(input().strip()))
+n = int(input())
 s = input().strip('\n\r')
 t = input().strip('\n\r')
-i = 0
-for _ in range(l):
-	while i != len(f):
-		if f[i: i + len(s)].lower() == s.lower():
-			f = f[:i] + t + f[i + len(s):]
-			i += 1
-			break
+for ln in f:
+	o, i = '', 0
+	while i != len(ln):
+		if n != 0 and ln[i:i+len(s)].lower() == s.lower():
+			o += t 
+			i += len(s)
+			n -= 1
 		else:
+			o += ln[i]
 			i += 1
-print(f)
-
+	print(o)
