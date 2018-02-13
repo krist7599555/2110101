@@ -92,41 +92,39 @@ if flt:
 print(reduce(lambda s, tp: s.replace(*tp), spi, '-'.join(ans)))
 
 # 04_P17
-from functools import reduce
-num = dict(zip('soon nueng song sam see ha hok jed pad kao'.split(), range(12)))
-exp = dict(zip('_ sip roey pun muen saen larn'.split(), range(7)))
-spi = [('yee-sip', 'song-sip'), ('sip-ed', 'sip-nueng')]
+def solve(inp):
+	num = dict(zip('soon nueng song sam see ha hok jed pad kao'.split(), range(12)))
+	exp = dict(zip('_ sip roey pun muen saen larn'.split(), range(7)))
+	def to_dig(inp):
+		for s, t in [('yee-sip', 'song-sip'), ('sip-ed', 'sip-nueng')]:
+			inp = inp.replace(s, t)
+		ls = inp.replace('-', ' ').split()
+		if 'sip' in ls:
+			x = ls.index('sip')
+			if x == 0 or ls[x-1] in exp:
+				ls.insert(x, 'nueng')
+		sm, nw = 0, 0
+		for d in ls:
+			if d in num:
+				nw = num[d]
+			elif d in exp:
+				sm += nw * pow(10, exp[d])
+				nw = 0
+		return sm
+	def to_decimal(inp):
+		inp = inp.replace('-', ' ').split()
+		return '.' + ''.join(map(str, map(num.get, inp))) if inp else ''
+	neg = 'lop' in inp
+	mdg, inp = inp.split('larn') if 'larn' in inp else ('', inp)
+	ndg, dml = inp.split('jood') if 'jood' in inp else (inp, '')
+	ans = 0
+	if mdg: ans += to_dig(mdg + ' _') * pow(10, 6)
+	if ndg: ans += to_dig(ndg + ' _')
+	if neg: ans = -ans
+	return format(ans, ',') + to_decimal(dml)
+print(solve(input().strip()))
 	
-dig, flt, *_ = tuple([*input().strip().split('jood'), ''])
-ans, tmp, neg = 0, 0, False
-dig = reduce(lambda s, tp: s.replace(*tp), spi, dig).split('-')
-for s in dig:
-	if not s: continue
-	if s == 'lop': neg = True
-	elif s in num:
-		ans += tmp
-		tmp = num[s]
-	elif s in exp:
-		if s == 'larn':
-			if ans < 1e6:
-				ans = (ans + tmp) * 10 ** exp[s]
-				tmp = 0
-			else:
-				tmp *= 10 ** exp[s]
-		elif s == 'sip':
-			if 0 < tmp < 10:
-				tmp *= 10
-			else:
-				ans += tmp
-				tmp = 10
-		else:
-			tmp *= 10 ** exp[s]
-	else: assert False
-ans += tmp
-print(format(-ans if neg else ans, ',d'), end='')
-if flt:
-	print('.', *[num[i] for i in flt.split('-') if i], sep='')
-  
+
 # 04_P18
 from itertools import takewhile
 from operator  import itemgetter as itemg
