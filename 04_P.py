@@ -96,9 +96,9 @@ def solve(inp):
 	num = dict(zip('soon nueng song sam see ha hok jed pad kao'.split(), range(12)))
 	exp = dict(zip('_ sip roey pun muen saen larn'.split(), range(7)))
 	def to_dig(inp):
-		for s, t in [('yee-sip', 'song-sip'), ('sip-ed', 'sip-nueng')]:
-			inp = inp.replace(s, t)
-		ls = inp.replace('-', ' ').split()
+		inp = inp.replace('yee-sip', 'song-sip')
+		inp = inp.replace('sip-ed', 'sip-nueng')
+		ls  = inp.replace('-', ' ').split()
 		if 'sip' in ls:
 			x = ls.index('sip')
 			if x == 0 or ls[x-1] in exp:
