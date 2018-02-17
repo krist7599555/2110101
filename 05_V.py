@@ -10,12 +10,13 @@ except: print('Not Found')
 
 # 05_V3
 from itertools   import repeat
+from operator    import itemgetter
 from collections import OrderedDict
-mp = map(lambda s: s[:10], open(input().strip()))
+mp = map(itemgetter(slice(10)), open(input().strip()))
 print(*OrderedDict(zip(mp, repeat(None))).keys(), sep='\n')
 
 # 05_V4
 from collections import Counter
 m = Counter(''.join(open(input().strip())))
 s = ''.join(map(str.strip, [input(), input(), input()]))
-print(*sorted(s, key=lambda c: m.get(c, 0), reverse = True), sep='')
+print(*sorted(s, key=lambda c: m.get(c, 0), reverse=True), sep='')
