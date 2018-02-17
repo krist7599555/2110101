@@ -22,10 +22,9 @@ for nm in map(str.strip, __import__('sys').stdin):
 		print(dic.get(nm, 'Not Found'))
 
 # 06_V4
-dic, mrd = {}, {}
-for ft, nm in [s.strip().split() for s in open(input().strip())]:
+dic = __import__('collections').OrderedDict()
+for s in open(input().strip()):
+	ft, nm = s.strip().split() 
 	dic.setdefault(ft, []).append(nm)
-	if ft not in mrd:
-		mrd[ft] = len(mrd)
-print(sorted(map(list, dic.items()), key=lambda i: mrd[i[0]]))
-print('The most favorite fruit is', max(dic.items(), key=lambda l: len(l[-1]))[0])
+print(list(map(list, dic.items())))
+print('The most favorite fruit is', max(dic.items(), key=lambda _: len(_[1]))[0])
