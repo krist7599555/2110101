@@ -53,13 +53,8 @@ print(sum(1 for i, j in zip(vow, vow[1:]) if i + 1 != j) + 1 if vow else 0)
 print(eval(input()))
 
 # 04_P15
-from collections import defaultdict as dict
-res = []
-dic = dict(int)
-for c in input():
-	dic[c] += 1
-	res.append(tuple([c, dic[c]]))
-print(*(ch for ch, cnt in res if dic[ch] == 1 or cnt == 2), sep='')
+inp = input().strip()
+print(''.join(c for i, c in enumerate(inp) if 1 in [inp.count(c), inp[:i].count(c)]))
 
 # 04_P16
 from functools import reduce
