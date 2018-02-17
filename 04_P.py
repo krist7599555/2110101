@@ -2,8 +2,8 @@
 print(sum(1 for i in input() if i.isupper()))
 
 # 04_P2
-from functools import reduce
-print(*reduce(lambda a, b: (a[0] + b[0], a[1] + b[1]), ((1, 0) if i in 'aeiouAEIOU' else (0, 1) for i in input() if i.isalpha()), (0, 0)))
+import numpy as np
+print(*sum(np.array(([0, 1], [1, 0])[c in 'aeiouAEIOU']) for c in input() if c.isalpha()))
 
 # 04_P3
 a, b = input().split()
@@ -46,8 +46,7 @@ inp = input().strip().replace(' ', '').lower()
 print(('no','yes')[inp == inp[::-1]])
 
 # 04_P13
-vow = [i for i, c in enumerate(input().lower()) if c in 'aeiou']
-print(sum(1 for i, j in zip(vow, vow[1:]) if i + 1 != j) + 1 if vow else 0)
+print(sum(i for i, _ in __import__('itertools').groupby(input(), key='aeiouAEIOU'.__contains__)))
 
 # 04_P14
 print(eval(input()))
