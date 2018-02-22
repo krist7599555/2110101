@@ -15,21 +15,21 @@ def solve_2(s):
     print(s)
 
 def solve_3(n, k):
-    if n <= 0 or k < 0 or k > n:
+    if 0 <= k <= n >= 1:
+        s = '01'
+        for i in range(1, n):
+            o = ''
+            for j in range(0, len(s), i):
+                o += s[j: j+i] + '0'
+                o += s[j: j+i] + '1'
+            s = o
+        for i in range(0, len(s), n):
+            o = s[i: i+n]
+            if o.count('1') == k:
+                print(o)
+    else:
         print('empty')
-        return
-    s = '01'
-    for i in range(1, n):
-        o = ''
-        for j in range(0, len(s), i):
-            o += s[j: j+i] + '0'
-            o += s[j: j+i] + '1'
-        s = o
-    for i in range(0, len(s), n):
-        o = s[i: i+n]
-        if o.count('1') == k:
-            print(o)
-
+        
 solve_1(0)
 solve_1(1)
 solve_1(2)
