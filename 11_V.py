@@ -28,8 +28,8 @@ exec(input())
 # 11_V4
 import numpy as np
 def read_square_matrix():
-  d = list(map(int, input().split()))
-  return np.array([d] + [input().split() for _ in range(len(d)-1)], dtype=np.int)
+    d = list(map(int, input().split()))
+    return np.array([d] + [input().split() for _ in range(len(d)-1)], dtype=np.int)
 def min_in_each_row(m):    return m.min(axis=1)
 def max_in_each_column(m): return m.max(axis=0)
 def diff_of_sums_of_two_diags(m):
