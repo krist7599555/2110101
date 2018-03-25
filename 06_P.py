@@ -85,9 +85,9 @@ for ln in map(str.strip, __import__('sys').stdin):
 	try:
 		if cm == 'end': break
 		print({
-			'list'	:lambda: ls,
-			'top'	  :lambda: ls[-1],
-			'shelf'	:lambda: ls.pop(),
+			'list'  :lambda: ls,
+			'top'   :lambda: ls[-1],
+			'shelf' :lambda: ls.pop(),
 			'return':lambda: ls.append(it) or len(ls),
 		}[cm]())
 	except:
