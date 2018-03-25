@@ -9,7 +9,7 @@ def all_pair_distances(p):
 	dx = x - x[:, np.newaxis]
 	dy = y - y[:, np.newaxis]
 	return np.hypot(dx, dy)
-exec(input().strip())
+exec(input())
 
 # 11_L3
 import numpy as np
