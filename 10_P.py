@@ -14,7 +14,9 @@ def combi(n, k):
 print(combi(*map(int, [input(), input()])))
 
 # 10_P4
-print(pow(*map(int, input().split())))
+def power(n, k, m):
+	return power(n * n % m, k // 2, m) * [1, n][k & 1] % m if k else 1
+print(power(*map(int, input().split())))
 
 # 10_P5
 def is_in(ls, vl):
