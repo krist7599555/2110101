@@ -2,7 +2,7 @@
 print('chmcgqahkceg'[int(input()) - 1])
 
 # 10_V2
-def gcd(x,y): return gcd(y, x%y) if y else x      	                # Greatest Common Divisor
+def gcd(x,y): return gcd(y, x % y) if y else x      	                # Greatest Common Divisor
 def A(m,n): return A(m-1, A(m,n-1)if n else 1) if m else n + 1 		# Ackermann Number
 def J(n,k): return (J(n-1, k) + k) % n if n > 1 else 0 			# Josephus Problem
 def C(n): return sum(C(i) * C(n-i-1)for i in range(n)) if n else 1 	# Catalan Number
