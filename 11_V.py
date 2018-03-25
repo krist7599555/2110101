@@ -6,7 +6,7 @@ import numpy as np
 mony = np.array([.0] * 5)
 item = np.array([.0] * 5)
 for c in map(float, input().split()):	
-	hity = np.array(input().split(), dtype=np.float)
+hity = np.array(input().split(), dtype=np.float)
 	mony += c * hity
 	item += hity
 x = mony.tolist().index(max(mony))
