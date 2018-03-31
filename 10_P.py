@@ -22,7 +22,7 @@ print(power(*map(int, input().split())))
 def is_in(ls, vl):
 	try:    return any(is_in(it, vl) for it in ls)
 	except: return ls == vl
-print(['Not Found', 'Found'][is_in(eva
+print(['Not Found', 'Found'][is_in(eval(input()), int(input()))])
 
 # 10_P6
 w = list(map(int, input().split()))
