@@ -55,11 +55,11 @@ print(sum(x for x, _ in groupby(input().split(','), key=lambda i: '-' in i)))
 
 # 06_P11
 ls = list(map(int, input().split()))
-ls = [ls.pop((-1, 0)[ls[0] > ls[-1]]) for _ in range(len(ls))]
+ls = [ls.pop(0 if ls[0] > ls[-1] else -1) for _ in range(len(ls))]
 a, b = map(sum, [ls[::2], ls[1::2]])
 print(a, b, [a == b, a > b, b > a].index(True))
 
-# 06_P2
+# 06_P12
 ls = list(input().strip())
 for _ in range(int(input())):
 	cm, *tp = input().split()
